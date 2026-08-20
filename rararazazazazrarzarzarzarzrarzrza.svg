@@ -163,7 +163,7 @@
     />
   </circle>
 
-  <!-- framebuffer lines -->
+  <!-- lines -->
   <g
     stroke="url(#blue)"
     stroke-width="4"
