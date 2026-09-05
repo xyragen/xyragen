@@ -156,7 +156,7 @@
     <circle cx="114" cy="72" r="6" fill="#7ee787"/>
 
     <!-- First command -->
-    <text class="prompt" x="75" y="145">user@system:~$</text>
+    <text class="prompt" x="75" y="145">xyragen@archlinux:~$</text>
     <text id="cmd1" class="command" x="270" y="145"> rm -rf /</text>
     <rect id="cursor1" class="cursor blink" x="388" y="147" width="11" height="22"/>
 
@@ -166,7 +166,7 @@
     </text>
 
     <!-- Second command -->
-    <text class="prompt" x="75" y="265">user@system:~$</text>
+    <text class="prompt" x="75" y="265">xyragen@archlinux:~$</text>
     <text id="cmd2" class="command" x="270" y="265"> sudo rm -rf /</text>
     <rect id="cursor2" class="cursor blink" x="462" y="267" width="11" height="22"/>
   </g>
