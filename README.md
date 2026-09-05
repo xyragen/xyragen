@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./rararazazazazrarzarzarzarzrarzrza.svg" width="100%" />
+<img src="./xyragen.svg" width="100%" />
 
 </div>
 
