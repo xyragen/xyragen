@@ -1,29 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="760" height="430" viewBox="0 0 760 430">
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="760"
+     height="430"
+     viewBox="0 0 760 430">
+
   <style>
     :root {
       --bg: #0d1117;
       --panel: #111820;
       --text: #d7dde5;
-      --muted: #7d8794;
       --green: #7ee787;
       --red: #ff7b72;
+      --border: #27313c;
     }
 
     .terminal {
       fill: var(--panel);
-      stroke: #27313c;
+      stroke: var(--border);
       stroke-width: 2;
-    }
-
-    .title {
-      fill: var(--muted);
-      font: 14px monospace;
     }
 
     .prompt,
     .command,
     .error {
-      font: 20px monospace;
+      font-family: monospace;
+      font-size: 20px;
       dominant-baseline: hanging;
     }
 
@@ -43,16 +43,16 @@
       fill: var(--text);
     }
 
-    /* Blinking cursor */
     .blink {
       animation: blink 0.9s steps(1) infinite;
     }
 
-    /* Type command 1 */
+    /* First command */
     #cmd1 {
       clip-path: inset(0 100% 0 0);
-      animation: type1 2s steps(9, end) 0.8s forwards,
-                 erase1 0.8s steps(9, end) 5.2s forwards;
+      animation:
+        type1 2s steps(9) 0.8s forwards,
+        erase1 0.8s steps(9) 5.2s forwards;
     }
 
     #cursor1 {
@@ -62,15 +62,17 @@
     /* Error message */
     #error {
       opacity: 0;
-      animation: errorIn 0.1s 3.9s forwards,
-                 errorOut 0.2s 6.3s forwards;
+      animation:
+        errorIn 0.1s 3.9s forwards,
+        errorOut 0.2s 6.3s forwards;
     }
 
-    /* Type command 2 */
+    /* Second command */
     #cmd2 {
       clip-path: inset(0 100% 0 0);
-      animation: type2 2.8s steps(13, end) 6.8s forwards,
-                 erase2 1s steps(13, end) 11.8s forwards;
+      animation:
+        type2 2.8s steps(13) 6.8s forwards,
+        erase2 1s steps(13) 11.8s forwards;
     }
 
     #cursor2 {
@@ -78,7 +80,7 @@
       animation: cursor2 13s steps(1) forwards;
     }
 
-    /* Terminal deletion/fade */
+    /* Final deletion effect */
     #terminalContent {
       animation: deleteAll 0.7s 12.9s forwards;
     }
@@ -89,15 +91,7 @@
 
     @keyframes erase1 {
       from { clip-path: inset(0 0 0 0); }
-      to   { clip-path: inset(0 100% 0 0); }
-    }
-
-    @keyframes errorIn {
-      to { opacity: 1; }
-    }
-
-    @keyframes errorOut {
-      to { opacity: 0; }
+      to { clip-path: inset(0 100% 0 0); }
     }
 
     @keyframes type2 {
@@ -106,7 +100,15 @@
 
     @keyframes erase2 {
       from { clip-path: inset(0 0 0 0); }
-      to   { clip-path: inset(0 100% 0 0); }
+      to { clip-path: inset(0 100% 0 0); }
+    }
+
+    @keyframes errorIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes errorOut {
+      to { opacity: 0; }
     }
 
     @keyframes cursor1 {
@@ -133,7 +135,10 @@
     }
   </style>
 
-  <!-- Minimal arched terminal window -->
+  <!-- Background -->
+  <rect width="760" height="430" fill="#0d1117"/>
+
+  <!-- Minimal arched terminal, no window controls or title bar -->
   <rect
     class="terminal"
     x="30"
@@ -145,20 +150,24 @@
   />
 
   <g id="terminalContent">
-    <!-- Window title -->
-    <text class="title" x="380" y="74" text-anchor="middle">
-      terminal
-    </text>
-
-    <!-- Window controls -->
-    <circle cx="70" cy="72" r="6" fill="#ff7b72"/>
-    <circle cx="92" cy="72" r="6" fill="#f2cc60"/>
-    <circle cx="114" cy="72" r="6" fill="#7ee787"/>
 
     <!-- First command -->
-    <text class="prompt" x="75" y="145">xyragen@archlinux:~$</text>
-    <text id="cmd1" class="command" x="270" y="145"> rm -rf /</text>
-    <rect id="cursor1" class="cursor blink" x="388" y="147" width="11" height="22"/>
+    <text class="prompt" x="75" y="145">
+      xyragen@archlinux:~$
+    </text>
+
+    <text id="cmd1" class="command" x="365" y="145">
+      rm -rf /
+    </text>
+
+    <rect
+      id="cursor1"
+      class="cursor blink"
+      x="462"
+      y="147"
+      width="11"
+      height="22"
+    />
 
     <!-- Error -->
     <text id="error" class="error" x="75" y="205">
@@ -166,8 +175,22 @@
     </text>
 
     <!-- Second command -->
-    <text class="prompt" x="75" y="265">xyragen@archlinux:~$</text>
-    <text id="cmd2" class="command" x="270" y="265"> sudo rm -rf /</text>
-    <rect id="cursor2" class="cursor blink" x="462" y="267" width="11" height="22"/>
+    <text class="prompt" x="75" y="265">
+      xyragen@archlinux:~$
+    </text>
+
+    <text id="cmd2" class="command" x="365" y="265">
+      sudo rm -rf /
+    </text>
+
+    <rect
+      id="cursor2"
+      class="cursor blink"
+      x="500"
+      y="267"
+      width="11"
+      height="22"
+    />
+
   </g>
 </svg>
